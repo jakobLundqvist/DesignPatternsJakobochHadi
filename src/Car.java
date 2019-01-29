@@ -1,16 +1,30 @@
 import javafx.scene.paint.Color;
 
 public abstract class Car {
-	public double enginePower; // Engine power of the car
-	public double currentSpeed; // The current speed of the car
-	public Color color; // Color of the car
-	public String modelName; // The car model name
 
-	public Volvo740() {
-		color = Color.RED;
-		enginePower = 100;
-		modelName = "Volvo740";
-		stopEngine();
+	
+	private double xPos, yPos;
+	private int dir;
+	// 0 == UP
+	// 1 == RIGHT
+	// 2 == DOWN
+	// 3 == LEFT
+	
+	private double enginePower; // Engine power of the car
+	private double currentSpeed; // The current speed of the car
+	private Color color; // Color of the car
+	private String modelName; // The car model name
+
+	public Car(double ep, Color c, String model) {
+
+		enginePower = ep;
+		color = c;
+		modelName = model;
+		xPos = 0;
+		yPos = 0;
+		dir = 1;
+		
+
 	}
 
 	public double getEnginePower() {
@@ -24,12 +38,30 @@ public abstract class Car {
 	public Color getColor() {
 		return color;
 	}
-
+	
 	public void startEngine() {
 		currentSpeed = 0.1;
 	}
 
 	public void stopEngine() {
 		currentSpeed = 0;
+	}
+
+	public abstract double speedFactor();
+
+	private void incrementSpeed(double amount) {
+		currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+	}
+
+	private void decrementSpeed(double amount) {
+		currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+	}
+
+	public void gas(double amount) {
+		incrementSpeed(amount);
+	}
+
+	public void brake(double amount) {
+		decrementSpeed(amount);
 	}
 }
