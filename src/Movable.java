@@ -1,5 +1,5 @@
 
-public interface Movable extends Car {
+public interface Movable {
 	public void move();
 	public void turnLeft();
 	public void turnRight();
