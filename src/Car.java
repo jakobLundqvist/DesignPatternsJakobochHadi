@@ -25,15 +25,15 @@ public abstract class Car implements Movable {
 
 	}
 
-	public double getEnginePower() {
+	public double getEnginePower() { //
 		return enginePower;
 	}
 
-	public double getCurrentSpeed() {
+	public double getCurrentSpeed() { //
 		return currentSpeed;
 	}
 
-	public Color getColor() {
+	public Color getColor() { // 
 		return color;
 	}
 
@@ -67,23 +67,29 @@ public abstract class Car implements Movable {
 		if(dir == 1){ // HÖGER
 			xPos += getCurrentSpeed();
 		}
-		if(dir == 2){ // HÖGER
+		if(dir == 2){ // BAKÅT
 			yPos -= getCurrentSpeed();
 		}
-		if(dir == 3){ // HÖGER
+		if(dir == 3){ // VÄNSTER
 			xPos -= getCurrentSpeed();
 		}
-		if(dir == 4){ // HÖGER
+		if(dir == 4){ // FRAMÅT
 			yPos += getCurrentSpeed();
 		}
 	}
-
-	public void turnLeft() {
+	
+	public void turnLeft() { // Svänger vänster
 		dir -= 1;
+		if(dir == 0){
+			dir = 4;
+		}
 	}
 
-	public void turnRight() {
+	public void turnRight() { // Svänger höger
 		dir += 1;
+		if(dir == 5){
+			dir = 1;
+		}
 	}
 
 }
