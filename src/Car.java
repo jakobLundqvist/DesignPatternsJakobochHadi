@@ -29,7 +29,8 @@ public abstract class Car implements Movable {
 		return enginePower;
 	}
 
-	public double getCurrentSpeed() { //
+	public double getCurrentSpeed() {
+		//
 		return currentSpeed;
 	}
 
@@ -56,10 +57,13 @@ public abstract class Car implements Movable {
 	}
 
 	public void gas(double amount) {
+		if(amount >=0 && amount<= 1)
 		incrementSpeed(amount);
 	}
 
 	public void brake(double amount) {
+		if(amount >=0 && amount<= 1)
+
 		decrementSpeed(amount);
 	}
 
