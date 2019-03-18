@@ -25,12 +25,19 @@ public abstract class Car implements Movable {
 
 	}
 
+	/**
+	 * Ger tillbaka bilens effekt
+	 * @return bilens effekt
+	 */
 	public double getEnginePower() { //
 		return enginePower;
 	}
 
-	public double getCurrentSpeed() {
-		//
+	/**
+	 * Ger tillbaka bilens nuvarande hastighet
+	 * @return bilens hastighet
+	 */
+	public double getCurrentSpeed() { //
 		return currentSpeed;
 	}
 
@@ -46,24 +53,38 @@ public abstract class Car implements Movable {
 		currentSpeed = 0;
 	}
 
+	/**
+	 * Denna metod asdas d s
+	 * @return
+	 */
 	public abstract double speedFactor();
 
 	private void incrementSpeed(double amount) {
 		currentSpeed = getCurrentSpeed() + speedFactor() * amount;
+		if(getCurrentSpeed() > getEnginePower()){
+			currentSpeed = getEnginePower(); // MAX
+		}
 	}
 
 	private void decrementSpeed(double amount) {
 		currentSpeed = getCurrentSpeed() - speedFactor() * amount;
+		if(getCurrentSpeed() < 0){
+			currentSpeed = 0; // MIN
+		}
+		
 	}
 
 	public void gas(double amount) {
-		if(amount >=0 && amount<= 1)
+		if( amount > 1 || amount < 0){
+			return;  // ABORT
+		}
 		incrementSpeed(amount);
 	}
 
 	public void brake(double amount) {
-		if(amount >=0 && amount<= 1)
-
+		if( amount > 1 || amount < 0){
+			return;  // ABORT
+		}
 		decrementSpeed(amount);
 	}
 
@@ -81,6 +102,7 @@ public abstract class Car implements Movable {
 			yPos += getCurrentSpeed();
 		}
 	}
+	
 	
 	public void turnLeft() { // Svänger vänster
 		dir -= 1;

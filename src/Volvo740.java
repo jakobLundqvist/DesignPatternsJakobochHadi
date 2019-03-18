@@ -13,4 +13,6 @@ public class Volvo740 extends Car {
 		return getEnginePower() * 0.01 * trimFactor;
 	}
 
+	
+
 }
