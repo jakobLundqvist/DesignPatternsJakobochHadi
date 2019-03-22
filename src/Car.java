@@ -40,21 +40,31 @@ public abstract class Car implements Movable {
 	public double getCurrentSpeed() { //
 		return currentSpeed;
 	}
-
+	
+	/**
+	 * Ger tillbaka bilens färg
+	 * @return
+	 */
 	public Color getColor() { // 
 		return color;
 	}
-
+	
+	/**
+	 * Startar motorn
+	 */
 	public void startEngine() {
 		currentSpeed = 0.1;
 	}
-
+	
+	/**
+	 * Stoppar motorn
+	 */
 	public void stopEngine() {
 		currentSpeed = 0;
 	}
 
 	/**
-	 * Denna metod asdas d s
+	 * Ger hastigheten
 	 * @return
 	 */
 	public abstract double speedFactor();
@@ -103,15 +113,20 @@ public abstract class Car implements Movable {
 		}
 	}
 	
-	
-	public void turnLeft() { // Svänger vänster
+	/**
+	 * Svänger Vänster
+	 */
+	public void turnLeft() {
 		dir -= 1;
 		if(dir == 0){
 			dir = 4;
 		}
 	}
 
-	public void turnRight() { // Svänger höger
+	/**
+	 * Svänger Höger
+	 */
+	public void turnRight() {
 		dir += 1;
 		if(dir == 5){
 			dir = 1;
