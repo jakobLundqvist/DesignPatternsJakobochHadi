@@ -27,6 +27,7 @@ public abstract class Car implements Movable {
 
 	/**
 	 * Ger tillbaka bilens effekt
+	 * 
 	 * @return bilens effekt
 	 */
 	public double getEnginePower() { //
@@ -35,27 +36,29 @@ public abstract class Car implements Movable {
 
 	/**
 	 * Ger tillbaka bilens nuvarande hastighet
+	 * 
 	 * @return bilens hastighet
 	 */
 	public double getCurrentSpeed() { //
 		return currentSpeed;
 	}
-	
+
 	/**
 	 * Ger tillbaka bilens färg
+	 * 
 	 * @return
 	 */
-	public Color getColor() { // 
+	public Color getColor() { //
 		return color;
 	}
-	
+
 	/**
 	 * Startar motorn
 	 */
 	public void startEngine() {
 		currentSpeed = 0.1;
 	}
-	
+
 	/**
 	 * Stoppar motorn
 	 */
@@ -65,60 +68,69 @@ public abstract class Car implements Movable {
 
 	/**
 	 * Ger hastigheten
+	 * 
 	 * @return
 	 */
 	public abstract double speedFactor();
 
 	private void incrementSpeed(double amount) {
 		currentSpeed = getCurrentSpeed() + speedFactor() * amount;
-		if(getCurrentSpeed() > getEnginePower()){
+		if (getCurrentSpeed() > getEnginePower()) {
 			currentSpeed = getEnginePower(); // MAX
 		}
 	}
 
 	private void decrementSpeed(double amount) {
 		currentSpeed = getCurrentSpeed() - speedFactor() * amount;
-		if(getCurrentSpeed() < 0){
+		if (getCurrentSpeed() < 0) {
 			currentSpeed = 0; // MIN
 		}
-		
+
 	}
 
 	public void gas(double amount) {
-		if( amount > 1 || amount < 0){
-			return;  // ABORT
+		if (amount > 1 || amount < 0) {
+			return; // ABORT
 		}
 		incrementSpeed(amount);
 	}
 
 	public void brake(double amount) {
-		if( amount > 1 || amount < 0){
-			return;  // ABORT
+		if (amount > 1 || amount < 0) {
+			return; // ABORT
 		}
 		decrementSpeed(amount);
 	}
 
 	public void move() {
-		if(dir == 1){ // HÖGER
+		if (dir == 1) { // HÖGER
 			xPos += getCurrentSpeed();
 		}
-		if(dir == 2){ // BAKÅT
+		if (dir == 2) { // BAKÅT
 			yPos -= getCurrentSpeed();
 		}
-		if(dir == 3){ // VÄNSTER
+		if (dir == 3) { // VÄNSTER
 			xPos -= getCurrentSpeed();
 		}
-		if(dir == 4){ // FRAMÅT
+		if (dir == 4) { // FRAMÅT
 			yPos += getCurrentSpeed();
 		}
 	}
-	
+
+	public double getX() {
+		return xPos;
+	}
+
+	public double getY() {
+		return yPos;
+	}
+
 	/**
 	 * Svänger Vänster
 	 */
 	public void turnLeft() {
 		dir -= 1;
-		if(dir == 0){
+		if (dir == 0) {
 			dir = 4;
 		}
 	}
@@ -128,7 +140,7 @@ public abstract class Car implements Movable {
 	 */
 	public void turnRight() {
 		dir += 1;
-		if(dir == 5){
+		if (dir == 5) {
 			dir = 1;
 		}
 	}

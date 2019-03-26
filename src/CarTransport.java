@@ -4,15 +4,13 @@ import javafx.scene.paint.Color;
 
 public class CarTransport extends Car {
 
-	private int flatbedAngle;
+	private Flatbed flatbed;
+	private CarLoader loader;
 
-	private ArrayList<Car> cars;
-	
-	
 	public CarTransport() {
 		super(2000, Color.ORANGE, "VOVLO LÅNGTRUCK");
-		flatbedAngle = 0;
-		cars = new ArrayList<Car>();
+		flatbed = new Flatbed();
+		loader = new CarLoader();
 		stopEngine();
 	}
 
@@ -20,36 +18,41 @@ public class CarTransport extends Car {
 		return getEnginePower() * 0.001;
 	}
 
-	public void loadCar(Car c){
-		if(flatbedAngle == 70 && c != this)
-			cars.add(c);
+	public void loadCar(Car c) {
+		if (flatbed.isOpen() && c != this)
+			loader.loadCar(c);
 	}
-	
-	
+
+	public void unloadCar() {
+		if (flatbed.isOpen())
+			loader.unloadLastCar();
+	}
+
+	@Override
+	public void move() {
+		super.move();
+		loader.updateAllPositions(this.getX(), this.getY());
+	}
+
 	/**
 	 * Höjer flaket 10 grader
 	 */
 	public void openRamp() {
-		if (getCurrentSpeed() > 0)
-			return;
-
-		flatbedAngle += 10;
-		if (flatbedAngle > 70)
-			flatbedAngle = 70;
+		if (getCurrentSpeed() == 0)
+			flatbed.open();
 	}
 
 	/**
 	 * Sänker flaket 10 grader
 	 */
 	public void closeRamp() {
-		flatbedAngle -= 10;
-		if (flatbedAngle < 0)
-			flatbedAngle = 0;
+		if (getCurrentSpeed() == 0)
+			flatbed.close();
 	}
 
 	@Override
 	public void gas(double amount) {
-		if (flatbedAngle == 0)
+		if (flatbed.isClosed())
 			super.gas(amount);
 	}
 
