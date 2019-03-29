@@ -73,6 +73,10 @@ public abstract class Car implements Movable {
 	 */
 	public abstract double speedFactor();
 
+	/**
+	 * Öka hastighet
+	 * @param amount
+	 */
 	private void incrementSpeed(double amount) {
 		currentSpeed = getCurrentSpeed() + speedFactor() * amount;
 		if (getCurrentSpeed() > getEnginePower()) {
@@ -80,6 +84,10 @@ public abstract class Car implements Movable {
 		}
 	}
 
+	/**
+	 * Minska Hastighet
+	 * @param amount
+	 */
 	private void decrementSpeed(double amount) {
 		currentSpeed = getCurrentSpeed() - speedFactor() * amount;
 		if (getCurrentSpeed() < 0) {
@@ -88,6 +96,10 @@ public abstract class Car implements Movable {
 
 	}
 
+	/**
+	 * Anropar incrementSpeed
+	 * @param amount
+	 */
 	public void gas(double amount) {
 		if (amount > 1 || amount < 0) {
 			return; // ABORT
@@ -95,6 +107,10 @@ public abstract class Car implements Movable {
 		incrementSpeed(amount);
 	}
 
+	/**
+	 * Anropar decrementSpeed
+	 * @param amount
+	 */
 	public void brake(double amount) {
 		if (amount > 1 || amount < 0) {
 			return; // ABORT
@@ -102,6 +118,9 @@ public abstract class Car implements Movable {
 		decrementSpeed(amount);
 	}
 
+	/**
+	 * Hur bilen ska röra på sig
+	 */
 	public void move() {
 		if (dir == 1) { // HÖGER
 			xPos += getCurrentSpeed();
