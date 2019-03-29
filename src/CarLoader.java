@@ -18,7 +18,6 @@ public class CarLoader {
 	}
 
 	public void updateAllPositions(double x, double y) {
-		// TODO Auto-generated method stub
 
 	}
 

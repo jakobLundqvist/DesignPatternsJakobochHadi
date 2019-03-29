@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 import javafx.scene.paint.Color;
 
 public class CarTransport extends Car {
@@ -8,7 +6,7 @@ public class CarTransport extends Car {
 	private CarLoader loader;
 
 	public CarTransport() {
-		super(2000, Color.ORANGE, "VOVLO LÅNGTRUCK");
+		super(2000, Color.ORANGE, "VOLVO LÅNGTRUCK");
 		flatbed = new Flatbed();
 		loader = new CarLoader();
 		stopEngine();
