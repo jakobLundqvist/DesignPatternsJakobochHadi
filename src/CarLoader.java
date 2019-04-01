@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class CarLoader {
+	
 	private ArrayList<Car> cars;
 
 	public void loadCar(Car c) {
