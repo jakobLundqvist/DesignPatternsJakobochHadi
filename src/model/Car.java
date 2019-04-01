@@ -1,3 +1,4 @@
+package model;
 import javafx.scene.paint.Color;
 
 public abstract class Car implements Movable {
