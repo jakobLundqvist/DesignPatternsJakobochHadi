@@ -1,4 +1,5 @@
 package model;
+
 import javafx.scene.paint.Color;
 
 public abstract class Car implements Movable {
@@ -76,6 +77,7 @@ public abstract class Car implements Movable {
 
 	/**
 	 * Öka hastighet
+	 * 
 	 * @param amount
 	 */
 	private void incrementSpeed(double amount) {
@@ -87,6 +89,7 @@ public abstract class Car implements Movable {
 
 	/**
 	 * Minska Hastighet
+	 * 
 	 * @param amount
 	 */
 	private void decrementSpeed(double amount) {
@@ -99,6 +102,7 @@ public abstract class Car implements Movable {
 
 	/**
 	 * Anropar incrementSpeed
+	 * 
 	 * @param amount
 	 */
 	public void gas(double amount) {
@@ -110,6 +114,7 @@ public abstract class Car implements Movable {
 
 	/**
 	 * Anropar decrementSpeed
+	 * 
 	 * @param amount
 	 */
 	public void brake(double amount) {
@@ -163,6 +168,14 @@ public abstract class Car implements Movable {
 		if (dir == 5) {
 			dir = 1;
 		}
+	}
+
+	public String getModelName() {
+		return this.modelName;
+	}
+
+	public void setY(double y) {
+		this.yPos = y;
 	}
 
 }

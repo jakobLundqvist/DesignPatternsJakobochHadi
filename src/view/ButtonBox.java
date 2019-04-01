@@ -12,6 +12,7 @@ public class ButtonBox extends HBox {
 	private CarController controller;
 	private Spinner<Integer> spinner;
 	private Button gasButton;
+	private Button brakeButton;
 
 	public ButtonBox(CarController cc) {
 		this.controller = cc;
@@ -23,6 +24,10 @@ public class ButtonBox extends HBox {
 	private void addEventListeners() {
 		gasButton.setOnAction(e -> {
 			controller.gas(spinner.getValue() / 100.0);
+		});
+		
+		brakeButton.setOnAction(e -> {
+			controller.brake(spinner.getValue() / 100.0);
 		});
 	}
 
@@ -37,7 +42,7 @@ public class ButtonBox extends HBox {
 		gasButton = new Button("Gas");
 		gasButton.setPrefSize(100, 20);
 
-		Button brakeButton = new Button("Brake");
+		brakeButton = new Button("Brake");
 		brakeButton.setPrefSize(100, 20);
 
 		spinnerBox.getChildren().addAll(spinner);
