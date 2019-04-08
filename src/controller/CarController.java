@@ -1,20 +1,17 @@
 package controller;
 
-import java.util.ArrayList;
-
 import javafx.animation.AnimationTimer;
+import main.App;
 import model.Car;
-import model.Saab95;
-import model.Scania;
+import model.CarModel;
 import view.CarPane;
 
 public class CarController {
 
-	private ArrayList<Car> model;
+	private CarModel model;
 
-	public CarController(CarPane cp) {
-
-		model = new ArrayList<Car>();
+	public CarController(CarPane cp, CarModel m) {
+		model = m;
 
 		AnimationTimer at = new AnimationTimer() {
 			@Override
@@ -25,7 +22,7 @@ public class CarController {
 
 						car.move();
 
-						if (car.getX() > 1100) {
+						if (car.getX() > App.WIDTH - 100) {
 							car.turnLeft();
 							car.turnLeft();
 							car.move();
@@ -45,47 +42,24 @@ public class CarController {
 		at.start();
 	}
 
-	public void addCar(Car c) {
-		c.setY(model.size() * 100);
-		model.add(c);
-	}
-
 	public void gas(double amount) {
-		for (Car car : model)
-			car.gas(amount);
+		model.gas(amount);
 	}
 
 	public void brake(double amount) {
-		for (Car car : model)
-			car.brake(amount);
+		model.brake(amount);
 	}
 
 	public void changeTurbo(String turbo) {
-		for (Car car : model) {
-			if (car instanceof Saab95) {
-				if (turbo.equals("Turbo On"))
-					((Saab95) car).setTurboOn();
-				else
-					((Saab95) car).setTurboOff();
-			}
-		}
-
+		model.changeTurbo(turbo);
 	}
 
 	public void raiseFlatbed() {
-		for (Car car : model) {
-			if (car instanceof Scania) {
-				((Scania) car).raiseFlatbed();
-			}
-		}
+		model.raiseFlatbed();
 	}
 
 	public void lowerFlatbed() {
-		for (Car car : model) {
-			if (car instanceof Scania) {
-				((Scania) car).lowerFlatbed();
-			}
-		}
+		model.lowerFlatbed();
 	}
 
 }
