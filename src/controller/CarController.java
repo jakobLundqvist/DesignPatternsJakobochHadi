@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import javafx.animation.AnimationTimer;
 import model.Car;
+import model.Saab95;
+import model.Scania;
 import view.CarPane;
 
 public class CarController {
@@ -56,6 +58,34 @@ public class CarController {
 	public void brake(double amount) {
 		for (Car car : model)
 			car.brake(amount);
+	}
+
+	public void changeTurbo(String turbo) {
+		for (Car car : model) {
+			if (car instanceof Saab95) {
+				if (turbo.equals("Turbo On"))
+					((Saab95) car).setTurboOn();
+				else
+					((Saab95) car).setTurboOff();
+			}
+		}
+
+	}
+
+	public void raiseFlatbed() {
+		for (Car car : model) {
+			if (car instanceof Scania) {
+				((Scania) car).raiseFlatbed();
+			}
+		}
+	}
+
+	public void lowerFlatbed() {
+		for (Car car : model) {
+			if (car instanceof Scania) {
+				((Scania) car).lowerFlatbed();
+			}
+		}
 	}
 
 }
