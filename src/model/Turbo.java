@@ -23,6 +23,10 @@ public class Turbo {
 		turboOn = false;
 	}
 
+	/**
+	 * Ger turbos värde
+	 * @return
+	 */
 	public double getTurboFactor() {
 		if (turboOn)
 			return ff;

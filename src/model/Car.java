@@ -48,7 +48,7 @@ public abstract class Car implements Movable {
 	/**
 	 * Ger tillbaka bilens färg
 	 * 
-	 * @return
+	 * @return färg
 	 */
 	public Color getColor() { //
 		return color;
@@ -142,10 +142,19 @@ public abstract class Car implements Movable {
 		}
 	}
 
+	/**
+	 * Ger tillbaka bilens x position
+	 * @return
+	 */
 	public double getX() {
 		return xPos;
 	}
 
+	
+	/**
+	 * Ger tillbaka bilens y position
+	 * @return
+	 */
 	public double getY() {
 		return yPos;
 	}
@@ -170,10 +179,18 @@ public abstract class Car implements Movable {
 		}
 	}
 
+	/**
+	 * Ger modellens namn
+	 * @return namn
+	 */
 	public String getModelName() {
 		return this.modelName;
 	}
 
+	/** 
+	 * uppdatera y position
+	 * @param y
+	 */
 	public void setY(double y) {
 		this.yPos = y;
 	}

@@ -42,22 +42,40 @@ public class CarController {
 		at.start();
 	}
 
+	/**
+	 * Knapp för gas
+	 * @param amount
+	 */
 	public void gas(double amount) {
 		model.gas(amount);
 	}
 
+	/**
+	 * Knapp för break
+	 * @param amount
+	 */
 	public void brake(double amount) {
 		model.brake(amount);
 	}
 
+	/**
+	 * Knapp för turbo
+	 * @param turbo
+	 */
 	public void changeTurbo(String turbo) {
 		model.changeTurbo(turbo);
 	}
 
+	/**
+	 * knapp för att kunna höja Flatbed
+	 */
 	public void raiseFlatbed() {
 		model.raiseFlatbed();
 	}
 
+	/**
+	 * Knapp för att kunna sänka Flatbed
+	 */
 	public void lowerFlatbed() {
 		model.lowerFlatbed();
 	}

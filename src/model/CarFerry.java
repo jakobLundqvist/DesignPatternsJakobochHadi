@@ -15,10 +15,17 @@ public class CarFerry extends Car{
 		return getEnginePower() * 0.00001;
 	}
 
+	/**
+	 * Lägger till en bil
+	 * @param
+	 */
 	public void loadCar(Car c) {
 			loader.loadCar(c);
 	}
 
+	/**
+	 * tar bort en bil
+	 */
 	public void unloadCar() {
 
 			loader.unloadFirstCar();

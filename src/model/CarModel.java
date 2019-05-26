@@ -34,6 +34,9 @@ public class CarModel implements Iterable<Car> {
 
 	}
 
+	/**
+	 * Tar upp flatbed
+	 */
 	public void raiseFlatbed() {
 		for (Car car : cars) {
 			if (car instanceof Scania) {
@@ -42,6 +45,9 @@ public class CarModel implements Iterable<Car> {
 		}
 	}
 
+	/**
+	 * Tar ner flatbed
+	 */
 	public void lowerFlatbed() {
 		for (Car car : cars) {
 			if (car instanceof Scania) {
